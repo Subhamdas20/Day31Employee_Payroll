@@ -1,9 +1,17 @@
 package com.bridgelabz;
 
 import java.sql.*;
+import java.util.Enumeration;
 
 public class ConnectSQL {
-
+        public static void listDrivers(){
+        Enumeration<Driver> driverList = DriverManager.getDrivers();
+        while (driverList.hasMoreElements()){
+            Driver driverClass = (Driver) driverList.nextElement();
+            System.out.println("  "+driverClass.getClass().getName()
+            );
+        }
+    }
     public static void main(String[] args) {
         String jdbcurl="jdbc:mysql://localhost:3306/payroll_service?useSSL=false";
         String userName="root";
@@ -22,8 +30,11 @@ public class ConnectSQL {
             int salary = resultSet.getInt("salary");
             System.out.println(salary);
             }
+            listDrivers();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+
     }
+
 }
