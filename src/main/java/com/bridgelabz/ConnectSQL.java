@@ -25,7 +25,5 @@ public class ConnectSQL {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 }
